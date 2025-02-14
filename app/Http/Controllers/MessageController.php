@@ -11,7 +11,8 @@ class MessageController extends Controller
 {
     public function index(){
 
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at', 'asc')->paginate(5);
+
 
         return view('messages.index', ['messages' => $messages]); //show the compact as well
     }
@@ -33,7 +34,7 @@ class MessageController extends Controller
         Message::create($request->validated());
 
 
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.index')->with('status', 'Message Created');
     }
 
     public function show(Message $message){
@@ -54,7 +55,7 @@ class MessageController extends Controller
         // ]);
         
         $message->update($request->validated());
-        return redirect()->route('messages.show', $message->id);
+        return redirect()->route('messages.show', $message->id)->with('status', 'Message Updated');;
     }
 
 
@@ -62,6 +63,6 @@ class MessageController extends Controller
 
         $message->delete();
 
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.index')->with('status', 'Message Deleted');
     }
 }

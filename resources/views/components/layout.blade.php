@@ -10,6 +10,7 @@
 </head>
 <body>
     <h1>Layout</h1>
+    <x-notification/>
     {{ $slot }}
 </body>
 </html>

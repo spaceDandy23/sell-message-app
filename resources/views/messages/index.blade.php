@@ -15,4 +15,7 @@
             </form>
         @endforeach
     </ul>
+    <!-- php artisan vendor:publish --tag=laravel-pagination -->
+
+    {{ $messages->links('vendor/pagination/simple-default') }}
 </x-layout>

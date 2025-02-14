@@ -2,7 +2,7 @@
 
 <h1>Edit Message</h1>
 
-<form action="{{ route('messages.update', $message->id) }}" method="POST">
+<form action="{{ route('messages.update', $message) }}" method="POST">
 @method('PATCH')
 <x-messages.form :message="$message" />
 
